@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <script>
+    if (location.hostname !== 'localhost' && !location.hostname.startsWith('127.')) {
+      var b = document.createElement('base');
+      b.href = '/Office-Life/';
+      document.head.appendChild(b);
+    }
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>OfficeLife</title>
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #1a1a2e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #eee;
+      font-family: sans-serif;
+    }
+    #game-container canvas { display: block; }
+    #legend {
+      margin-top: 10px;
+      font-size: 12px;
+      opacity: 0.6;
+      letter-spacing: 0.03em;
+    }
+    #sound-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 5px solid #e53935;
+      background: #fff;
+      cursor: pointer;
+      font-size: 22px;
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      z-index: 100;
+      user-select: none;
+      padding: 0;
+    }
+    #sound-btn.on {
+      background: #1565C0;
+      border-color: transparent;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container"></div>
+  <button id="sound-btn" title="Ton ein/aus">♫</button>
+  <div id="legend">
+    ● Weiß&nbsp;=&nbsp;Arbeiten &nbsp;|&nbsp;
+    ☕ Braun&nbsp;=&nbsp;Kaffee &nbsp;|&nbsp;
+    ● Grau&nbsp;=&nbsp;Idle &nbsp;—&nbsp;
+    Balken: Energie&nbsp;(grün) · Stress&nbsp;(rot) · Sozial&nbsp;(blau) · Kaffee&nbsp;(braun)
+  </div>
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('sound-btn').addEventListener('click', function () {
+      var isOn = this.classList.toggle('on');
+      if (window.officeLifeInit) window.officeLifeInit();
+      setTimeout(function () {
+        if (window.officeLifeToggleSound) window.officeLifeToggleSound(isOn);
+      }, 200);
+    });
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
