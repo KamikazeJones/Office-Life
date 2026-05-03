@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <base href="/Office-Life/">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <title>OfficeLife</title>
-  <link rel="manifest" href="manifest.json" />
+  <link rel="manifest" href="/manifest.json" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -39,10 +38,10 @@
     ● Grau&nbsp;=&nbsp;Idle &nbsp;—&nbsp;
     Balken: Energie&nbsp;(grün) · Stress&nbsp;(rot) · Sozial&nbsp;(blau)
   </div>
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
+      navigator.serviceWorker.register('/sw.js');
     }
   </script>
 </body>
