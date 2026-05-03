@@ -1,0 +1,17 @@
+{
+  "name": "office-life",
+  "version": "0.1.0",
+  "description": "Büro-Simulation – ClojureScript + Phaser MVP",
+  "scripts": {
+    "dev": "shadow-cljs watch app",
+    "build": "shadow-cljs release app",
+    "repl": "shadow-cljs cljs-repl app"
+  },
+  "devDependencies": {
+    "shadow-cljs": "3.4.6"
+  },
+  "dependencies": {
+    "phaser": "^3.85.0",
+    "tone": "^15.1.22"
+  }
+}
