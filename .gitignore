@@ -1,0 +1,4 @@
+office-life/node_modules/
+office-life/.shadow-cljs/
+office-life/public/js/
+office-life/dist/
